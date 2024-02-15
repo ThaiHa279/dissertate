@@ -1,8 +1,6 @@
 from peewee import *
 import datetime
-from connector import BaseModel, pg_db
-
-
+from models.connector import BaseModel, pg_db
 
 class User(BaseModel):
     username = CharField(unique=True)
