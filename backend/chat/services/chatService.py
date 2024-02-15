@@ -1,5 +1,5 @@
 from flask import request
-from models.chatModels import Message 
+from chat.models.chatModel import Message 
 
 def post_message(user, message_text):
     if message_text:
