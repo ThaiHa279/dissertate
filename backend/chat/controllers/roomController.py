@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource, Api
-from services.chatService import post_message
+from services.roomService import *
 
 class Room(Resource):
     def get(self):
@@ -8,7 +8,6 @@ class Room(Resource):
 
     def post(self):
         json_data = request.get_json(force=True)
-        post_message(json_data['user'], json_data['message'])
         return {'message': 'POST method called', 'data': json_data}, 201
 
     def put(self):

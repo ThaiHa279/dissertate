@@ -1,0 +1,4 @@
+chroma_db
+chat/models/__pycache__/
+chat/services/__pycache__/
+chat/controllers/__pycache__/

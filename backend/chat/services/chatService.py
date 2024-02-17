@@ -1,9 +1,8 @@
-from flask import request
-from chat.models.chatModel import Message 
+from models.createModels import Chat 
 
-def post_message(user, message_text):
+def post_message(user, message_text, room_id):
     if message_text:
-        new_message = Message(user=user, content=message_text)
+        new_message = Chat(role=user, content=message_text, room_id=room_id)
         new_message.save()
         return {'message': 'Message saved successfully'}, 201
     else:

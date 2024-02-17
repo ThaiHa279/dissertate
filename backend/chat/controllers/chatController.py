@@ -8,7 +8,7 @@ class Chat(Resource):
 
     def post(self):
         json_data = request.get_json(force=True)
-        post_message(json_data['user'], json_data['message'])
+        post_message(json_data['role'], json_data['message'], json_data['room_id'])
         return {'message': 'POST method called', 'data': json_data}, 201
 
     def put(self):
