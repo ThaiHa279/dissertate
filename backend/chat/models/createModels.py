@@ -4,6 +4,8 @@ from models.connector import BaseModel, pg_db
 class Process(BaseModel):
     name = CharField(max_length=255)
     api = CharField(max_length=255, null=True)
+    prarameter = CharField(max_length=255, null=True)
+    
 
 class Room(BaseModel):
     user_id_1 = IntegerField()
