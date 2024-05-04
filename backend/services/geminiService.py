@@ -37,7 +37,9 @@ class GeminiService:
             db = Chroma(persist_directory="./chroma_db", embedding_function=self.embed)
             db.get() 
             docs = db.similarity_search(query)
-            return docs[0].metadata.get('process_id')
+            res = [docs[0].metadata.get('process_id'), docs[1].metadata.get('process_id'), docs[2].metadata.get('process_id')]
+            print(res)
+            return max(set(res), key = res.count)
         else:
             return 0
     

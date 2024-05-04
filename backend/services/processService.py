@@ -26,14 +26,17 @@ class ProcessService:
         return "Tôi cần các thông tin về " + process.arguments + " để thực thi quy trình " + process.name
     
     def runProcess(self, process_id, message):
-        process = Process.get_by_id(process_id)
-        arguments = gemi.extractInfor(message, process.arguments)
-        if "null" in arguments:
-            return f'Không thể trích xuất thông tin từ "{message}"'
-        if process_id == 1:
-            json_obj = list(json.loads(arguments).items())
-            (name, key, varible) = (json_obj[0][1], json_obj[1][1], json_obj[2][1])
-            return self.addProcess(name, key, varible)
-        rpa = RPAService()
-        rpa.runProcess(process.key, arguments)
-        return f'Đang chạy quy trình {process.name} với thông tin {arguments}'
+        try: 
+            process = Process.get_by_id(process_id)
+            arguments = gemi.extractInfor(message, process.arguments)
+            if arguments == "" or "null" in arguments or "Không" in arguments or "không" in arguments:
+                return f'Không thể trích xuất thông tin từ "{message}"'
+            if process_id == 1:
+                json_obj = list(json.loads(arguments).items())
+                (name, key, varible) = (json_obj[0][1], json_obj[1][1], json_obj[2][1])
+                return self.addProcess(name, key, varible)
+            rpa = RPAService()
+            rpa.runProcess(process.key, arguments)
+            return f'Đang chạy quy trình {process.name} với thông tin {arguments}'
+        except Exception as e:
+            return e
