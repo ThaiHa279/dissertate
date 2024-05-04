@@ -1,4 +1,6 @@
 chroma_db
 backend/models/__pycache__/
+backend/models/.env
 backend/services/__pycache__/
+backend/services/.env
 .venv/
