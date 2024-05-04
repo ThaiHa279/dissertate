@@ -1,0 +1,4 @@
+chroma_db
+backend/models/__pycache__/
+backend/services/__pycache__/
+.venv/
