@@ -32,7 +32,7 @@ class GeminiService:
         return response.text
     
     def classifyMessage(self, query):
-        response = self.model.generate_content("câu \""+query+"\" có phải là câu mệnh lệnh không? Chỉ trả lời Đúng hoặc Sai.")
+        response = self.model.generate_content("câu \""+query+"\" có yêu cầu chatbot hay không? Chỉ trả lời Đúng hoặc Sai.")
         if "Đúng" in response.text:
             db = Chroma(persist_directory="./chroma_db", embedding_function=self.embed)
             db.get() 
